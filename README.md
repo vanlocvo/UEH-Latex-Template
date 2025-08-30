@@ -11,15 +11,12 @@
 - `vietnamese.lbx`, `vietnamese-apa.lbx`: Hỗ trợ hiển thị tiếng Việt cho các trường và định dạng APA trong mục tài liệu tham khảo.
 
 ## Hướng dẫn sử dụng
+1. **Chuẩn bị với Overleaf**. Bạn có thể xem thêm ở wiki: [tại đây](https://github.com/vanlocvo/UEH-Template/wiki/H%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-s%E1%BB%AD-d%E1%BB%A5ng-v%E1%BB%9Bi-Overleaf)
+2. **Chỉnh sửa thông tin cá nhân, môn học, giảng viên** trong `ueh/cover.tex`.
+3. **Thêm nội dung các chương** vào các file trong thư mục `chapters/`.
+4. **Thêm tài liệu tham khảo** vào `references.bib` theo chuẩn BibTeX.
 
-1. **Có thể sử dụng trực tiếp trên Overleaf** (không cần cài đặt TeX Live thủ công).
-2. **Biên dịch tài liệu** theo trình tự:
-   - Chạy `pdflatex main.tex`
-   - Chạy `biber main`
-   - Chạy lại `pdflatex main.tex` (2 lần)
-3. **Chỉnh sửa thông tin cá nhân, môn học, giảng viên** trong `ueh/cover.tex`.
-4. **Thêm nội dung các chương** vào các file trong thư mục `chapters/`.
-5. **Thêm tài liệu tham khảo** vào `references.bib` theo chuẩn BibTeX.
+Ngoài ra bạn có thể xem thêm hướng dẫn sử dụng Latex tại đây: https://github.com/mh0132345/latex-tutorial
 
 ## Tính năng nổi bật
 - Trang bìa UEH hiện đại, đúng chuẩn.
