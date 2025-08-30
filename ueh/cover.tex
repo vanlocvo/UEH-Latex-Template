@@ -1,0 +1,84 @@
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{lipsum}
+\usepackage{tcolorbox}
+\usetikzlibrary{positioning, calc}
+\tcbuselibrary{breakable, skins}
+\definecolor{uehTeal}{HTML}{105F68}
+\definecolor{uehOrange}{HTML}{F47C2A}
+
+\newcommand{\uehsubject}{Môn học}
+\newcommand{\uehlecturer}{Giảng viên hướng dẫn}
+\newcommand{\uehstudentname}{Họ và tên}
+\newcommand{\uehstudentid}{MSSV}
+\newcommand{\uehclass}{Lớp}
+\newcommand{\uehcity}{Thành phố Hồ Chí Minh}
+\newcommand{\uehdate}{ngày 30 tháng 8 năm 2025}
+\newcommand{\uehtitle}{TIỂU LUẬN}
+\newcommand{\uehtopictitle}{Tên Tiểu Luận}
+
+\newcommand{\uehsubjectvalue}{Môn Học}
+\newcommand{\uehlecturervalue}{TS. Tiến Sĩ}
+\newcommand{\uehstudentnamevalue}{Võ Trí Lộc}
+\newcommand{\uehstudentidvalue}{123456789}
+\newcommand{\uehclassvalue}{1234567890}
+
+\newcommand{\uehcover}{
+    \begin{titlepage}
+        \begin{tikzpicture}[remember picture, overlay]
+
+            \node[anchor=north west, text width=\textwidth, align=left] at ($(current page.north west) + (1.5cm,-3em)$) {
+                \fontsize{13}{13}\selectfont
+                \textbf{ĐẠI HỌC KINH TẾ TP. HỒ CHÍ MINH}\\[0.1cm]
+                \textbf{TRƯỜNG KINH DOANH} | \textcolor{gray}{\textbf{KHOA QUẢN TRỊ}}\\[0.8cm]
+                \includegraphics[width=6cm]{ueh/logo.png}
+            };
+            
+            \node[draw=none, fill=uehTeal, anchor=south west, minimum width=\paperwidth, minimum height=\paperheight/3] (info) at (current page.south west) {};
+
+            \node[draw=none, fill=none, anchor=south west, minimum width=\paperwidth, minimum height=\paperheight/5] at (info.north west)
+            {
+                \begin{minipage}{\textwidth}
+                    \fontsize{32}{32}\selectfont
+                    \textbf{\textcolor{uehTeal}{\uehtitle}}\\[0.5cm]
+                    \fontsize{18}{18}\selectfont
+                    \textbf{\textcolor{uehTeal}{\uehtopictitle}}
+                \end{minipage}
+            };
+
+
+            \node[draw=none, fill=none, anchor=north, minimum width=\paperwidth] at ($(info.north) - (0,2em)$)
+            {
+                \newtcolorbox{uehleftbordertext}{
+                    blanker, breakable, left=1em,
+                    borderline west={3pt}{0pt}{uehOrange}
+                }
+                \begin{uehleftbordertext}
+                    \begin{minipage}{\textwidth}
+                        \fontsize{16}{16}\selectfont
+                            \color{white}{
+                            \textbf{\uehsubject:} \uehsubjectvalue\\[0.4cm]
+                            \textbf{\uehlecturer:} \uehlecturervalue\\[0.4cm]
+                            \textbf{\uehstudentname:} \uehstudentnamevalue\\[0.4cm]
+                            \textbf{\uehstudentid:} \uehstudentidvalue\\[0.4cm]
+                            \textbf{\uehclass:} \uehclassvalue
+                        }
+                    \end{minipage}
+                \end{uehleftbordertext}
+            };
+            
+            \node[draw=none, fill=none, anchor=south, minimum width=\paperwidth] at ($(info.south) + (0,2em)$)
+            {
+                \fontsize{16}{16}\selectfont
+                \color{white}{
+                    \textbf{\uehcity,} \uehdate
+                }
+            };
+
+            % \fill[uehOrange] (\paperwidth/1.25,\paperheight/3) circle (\paperwidth/12);
+
+        \end{tikzpicture}
+    \end{titlepage}
+}

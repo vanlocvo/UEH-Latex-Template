@@ -1,0 +1,290 @@
+% vietnamese-apa.lbx
+% Based on american-apa.lbx, adapted for Vietnamese
+
+\ProvidesFile{vietnamese-apa.lbx}[2025-08-30]
+\InheritBibliographyExtras{vietnamese}
+
+% Declare new APA-specific strings (translate as needed)
+\NewBibliographyString{publication}
+\NewBibliographyString{jourarticle}
+\NewBibliographyString{revisededition}
+\NewBibliographyString{typevolume}
+\NewBibliographyString{typevolumes}
+\NewBibliographyString{typeseries}
+\NewBibliographyString{typeseriess}
+\NewBibliographyString{typevolseries}
+\NewBibliographyString{typevolseriess}
+\NewBibliographyString{chair}
+\NewBibliographyString{chairs}
+\NewBibliographyString{on}
+\NewBibliographyString{retrieved}
+\NewBibliographyString{available}
+\NewBibliographyString{from}
+\NewBibliographyString{archivedat}
+\NewBibliographyString{origyear}
+\NewBibliographyString{reviewof}
+\NewBibliographyString{with}
+\NewBibliographyString{supplement}
+\NewBibliographyString{commenton}
+\NewBibliographyString{manunpub}
+\NewBibliographyString{maninprep}
+\NewBibliographyString{mansub}
+\NewBibliographyString{producer}
+\NewBibliographyString{producers}
+\NewBibliographyString{execproducer}
+\NewBibliographyString{execproducers}
+\NewBibliographyString{director}
+\NewBibliographyString{directors}
+\NewBibliographyString{execdirector}
+\NewBibliographyString{execdirectors}
+\NewBibliographyString{writer}
+\NewBibliographyString{writers}
+\NewBibliographyString{host}
+\NewBibliographyString{hosts}
+\NewBibliographyString{guestexpert}
+\NewBibliographyString{guestexperts}
+\NewBibliographyString{narrator}
+\NewBibliographyString{narrators}
+\NewBibliographyString{film}
+\NewBibliographyString{tvseries}
+\NewBibliographyString{tvepisode}
+\NewBibliographyString{video}
+\NewBibliographyString{song}
+\NewBibliographyString{album}
+\NewBibliographyString{podcast}
+\NewBibliographyString{podcastepisode}
+\NewBibliographyString{interview}
+\NewBibliographyString{speech}
+\NewBibliographyString{lithograph}
+\NewBibliographyString{map}
+\NewBibliographyString{lecturenotes}
+\NewBibliographyString{powerpoint}
+\NewBibliographyString{photograph}
+\NewBibliographyString{photographs}
+\NewBibliographyString{present}
+\NewBibliographyString{painting}
+\NewBibliographyString{article}
+\NewBibliographyString{execorder}
+\NewBibliographyString{senate}
+\NewBibliographyString{resolution}
+\NewBibliographyString{houseofrepresentatives}
+\NewBibliographyString{report}
+\NewBibliographyString{us}
+\NewBibliographyString{southcarolina}
+\NewBibliographyString{constitution}
+\NewBibliographyString{section}
+\NewBibliographyString{amendment}
+\NewBibliographyString{proposed}
+\NewBibliographyString{repealed}
+\NewBibliographyString{unitednations}
+\NewBibliographyString{charter}
+\NewBibliographyString{ofthe}
+\NewBibliographyString{tothe}
+\NewBibliographyString{alabama}
+\NewBibliographyString{alaska}
+\NewBibliographyString{arizona}
+\NewBibliographyString{arkansas}
+\NewBibliographyString{california}
+\NewBibliographyString{colorado}
+\NewBibliographyString{connecticut}
+\NewBibliographyString{delaware}
+\NewBibliographyString{florida}
+\NewBibliographyString{georgia}
+\NewBibliographyString{hawaii}
+\NewBibliographyString{idaho}
+\NewBibliographyString{illinois}
+\NewBibliographyString{indiana}
+\NewBibliographyString{iowa}
+\NewBibliographyString{kansas}
+\NewBibliographyString{kentucky}
+\NewBibliographyString{louisiana}
+\NewBibliographyString{maine}
+\NewBibliographyString{maryland}
+\NewBibliographyString{massachusetts}
+\NewBibliographyString{michigan}
+\NewBibliographyString{minnesota}
+\NewBibliographyString{mississippi}
+\NewBibliographyString{missouri}
+\NewBibliographyString{montana}
+\NewBibliographyString{nebraska}
+\NewBibliographyString{nevada}
+\NewBibliographyString{newhampshire}
+\NewBibliographyString{newjersey}
+\NewBibliographyString{newmexico}
+\NewBibliographyString{newyork}
+\NewBibliographyString{northcarolina}
+\NewBibliographyString{northdakota}
+\NewBibliographyString{ohio}
+\NewBibliographyString{oklahoma}
+\NewBibliographyString{oregon}
+\NewBibliographyString{pennsylvania}
+\NewBibliographyString{rhodeisland}
+\NewBibliographyString{southcarolina}
+\NewBibliographyString{southdakota}
+\NewBibliographyString{tennessee}
+\NewBibliographyString{texas}
+\NewBibliographyString{utah}
+\NewBibliographyString{vermont}
+\NewBibliographyString{virginia}
+\NewBibliographyString{washington}
+\NewBibliographyString{westvirginia}
+\NewBibliographyString{wisconsin}
+\NewBibliographyString{wyoming}
+
+% Vietnamese APA strings (translate as needed)
+\DeclareBibliographyStrings{%
+  inherit          = {vietnamese},
+  jourarticle      = {{bài báo}{bài báo}},
+  ofthe            = {{của}{của}},
+  tothe            = {{đến}{đến}},
+  unitednations    = {{Liên Hợp Quốc}{LHQ}},
+  charter          = {{hiến chương}{hiến chương}},
+  proposed         = {{đề xuất}{đề xuất}},
+  repealed         = {{bị bãi bỏ}{bãi bỏ}},
+  execorder        = {{Lệnh hành pháp}{Lệnh hành pháp}},
+  senate           = {{Thượng viện}{TV}},
+  resolution       = {{Nghị quyết}{NQ}},
+  houseofrepresentatives = {{Hạ viện}{HV}},
+  report           = {{Báo cáo}{BC}},
+  us               = {{Hoa Kỳ}{HK}},
+  southcarolina    = {{Nam Carolina}{NC}},
+  constitution     = {{Hiến pháp}{HP}},
+  section          = {{Mục}{§}},
+  amendment        = {{sửa đổi}{sửa đổi}},
+  article          = {{điều}{điều}},
+  painting         = {{tranh}{tranh}},
+  present          = {{hiện tại}{hiện tại}},
+  song             = {{bài hát}{bài hát}},
+  album            = {{album}{album}},
+  map              = {{bản đồ}{bản đồ}},
+  photograph       = {{ảnh}{ảnh}},
+  photographs      = {{các ảnh}{các ảnh}},
+  powerpoint       = {{bài trình chiếu}{bài trình chiếu}},
+  lecturenotes     = {{ghi chú bài giảng}{ghi chú bài giảng}},
+  podcast          = {{podcast âm thanh}{podcast}},
+  podcastepisode   = {{tập podcast âm thanh}{tập podcast}},
+  interview        = {{phỏng vấn}{phỏng vấn}},
+  speech           = {{bài phát biểu}{bài phát biểu}},
+  lithograph       = {{tranh in đá}{tranh in đá}},
+  video            = {{video}{video}},
+  film             = {{phim}{phim}},
+  tvseries         = {{phim truyền hình}{phim truyền hình}},
+  tvepisode        = {{tập phim truyền hình}{tập phim truyền hình}},
+  manunpub         = {{bản thảo chưa xuất bản}{bản thảo chưa xuất bản}},
+  maninprep        = {{bản thảo đang chuẩn bị}{bản thảo đang chuẩn bị}},
+  mansub           = {{bản thảo đã nộp}{bản thảo đã nộp}},
+  supplement       = {{phụ lục}{phụ lục}},
+  revisededition   = {{Phiên bản sửa đổi}{PB sửa đổi}},
+  reviewof         = {{đánh giá về}{đánh giá về}},
+  page             = {{Trang}{{}tr}},
+  pages            = {{Các trang}{{}tr}},
+  on               = {{trên}{trên}},
+  retrieved        = {{truy xuất}{truy xuất}},
+  available        = {{có sẵn}{có sẵn}},
+  from             = {{từ}{từ}},
+  archivedat       = {{lưu trữ tại}{lưu trữ tại}},
+  with             = {{với}{với}},
+  reprintas        = {{tái bản như}{tái bản như}},
+  reprintfrom      = {{tái bản từ}{tái bản từ}},
+  commenton        = {{bình luận về}{bình luận về}},
+  part             = {{phần}{phần}},
+  paragraph        = {{đoạn}{đoạn}},
+  paragraphs       = {{các đoạn}{các đoạn}},
+  narrator         = {{người kể chuyện}{người kể chuyện}},
+  narrators        = {{các người kể chuyện}{các người kể chuyện}},
+  producer         = {{nhà sản xuất}{nhà sản xuất}},
+  producers        = {{các nhà sản xuất}{các nhà sản xuất}},
+  execproducer     = {{Nhà sản xuất điều hành}{NSXĐH}},
+  execproducers    = {{Các nhà sản xuất điều hành}{NSXĐH}},
+  execdirector     = {{Giám đốc điều hành}{GĐĐH}},
+  execdirectors    = {{Các giám đốc điều hành}{GĐĐH}},
+  chair            = {{Chủ tịch}{Chủ tịch}},
+  chairs           = {{Các chủ tịch}{Các chủ tịch}},
+  director         = {{giám đốc}{giám đốc}},
+  directors        = {{các giám đốc}{các giám đốc}},
+  writer           = {{tác giả}{tác giả}},
+  writers          = {{các tác giả}{các tác giả}},
+  host             = {{người dẫn chương trình}{người dẫn chương trình}},
+  hosts            = {{các người dẫn chương trình}{các người dẫn chương trình}},
+  guestexpert      = {{chuyên gia khách mời}{chuyên gia khách mời}},
+  guestexperts     = {{các chuyên gia khách mời}{các chuyên gia khách mời}},
+  mathesis         = {{Luận văn thạc sĩ}{Luận văn thạc sĩ}},
+  phdthesis        = {{Luận án tiến sĩ}{Luận án tiến sĩ}},
+  origyear         = {{năm xuất bản gốc}{năm xuất bản gốc}},
+  typevolume       = {{Biên tập viên tập}{BTV tập}},
+  typevolumes      = {{Các biên tập viên tập}{BTV tập}},
+  typeseries       = {{Biên tập viên chuỗi}{BTV chuỗi}},
+  typeseriess      = {{Các biên tập viên chuỗi}{BTV chuỗi}},
+  typevolseries    = {{Biên tập viên chuỗi và tập}{BTV chuỗi & tập}},
+  typevolseriess   = {{Các biên tập viên chuỗi và tập}{BTV chuỗi & tập}},
+  annodomini       = {{SCN}{SCN}},
+  beforechrist     = {{TCN}{TCN}},
+  commonera        = {{CN}{CN}},
+  beforecommonera  = {{TCN}{TCN}},
+  publication   = {{Xuất bản}{Xuất bản}}
+}
+
+% APA-specific date macros
+\DeclareBibliographyExtras{%
+  \def\urldatecomma{\addcomma\addspace}%
+  \protected\def\mkbibdateapalong#1#2#3#4{%
+    % As per 10.1, Articles only have year
+    \ifboolexpr{ (test {\ifentrytype{article}}
+                  or (test {\ifentrytype{inbook}} and not test {\ifnameundef{editor}}))
+                 and not test {\iffieldequalstr{entrysubtype}{nonacademic}} }
+      {\clearfield{labelmonth}%
+       \clearfield{labelday}}
+      {}%
+    \iffieldundef{#1}% YEAR
+      {}%
+      {\iffieldbibstring{#1}{\bibncpstring{\thefield{#1}}}{\thefield{#1}}}%
+    \iffieldundef{#2}% YEARDIVISION
+      {}%
+      {\iffieldundef{#1}%
+        {}%
+        {\addcomma\addspace}%
+       \iffieldbibstring{#2}{\bibcplstring{\thefield{#2}}}{\thefield{#2}}}%
+    \iffieldundef{#3}% MONTH
+      {}%
+      {\iffieldundef{#1}%
+        {}%
+        {\addcomma\addspace}%
+       \mkbibmonth{\thefield{#3}}}%
+    \iffieldundef{#4}% DAY
+      {}%
+      {\iffieldundef{#3}%
+        {}%
+        {\addspace}%
+       \stripzeros{\thefield{#4}}}}%
+  \protected\def\mkbibdateapalongextra#1#2#3#4{%
+    % As per 10.1, Articles only have year
+    \ifboolexpr{ (test {\ifentrytype{article}}
+                  or (test {\ifentrytype{inbook}} and not test {\ifnameundef{editor}}))
+                 and not test {\iffieldequalstr{entrysubtype}{nonacademic}} }
+      {\clearfield{labelmonth}%
+       \clearfield{labelday}}
+      {}%
+    \iffieldundef{#1}% YEAR
+      {}%
+      {\iffieldbibstring{#1}{\bibncpstring{\thefield{#1}}}{\thefield{#1}}\printfield{extradate}}%
+    \iffieldundef{#2}% YEARDIVISION
+      {}%
+      {\iffieldundef{#1}%
+        {}%
+        {\addcomma\addspace}%
+       \iffieldbibstring{#2}{\bibcplstring{\thefield{#2}}}{\thefield{#2}}}%
+    \iffieldundef{#3}% MONTH
+      {}%
+      {\iffieldundef{#1}%
+        {}%
+        {\addcomma\addspace}%
+       \mkbibmonth{\thefield{#3}}}%
+    \iffieldundef{#4}% DAY
+      {}%
+      {\iffieldundef{#3}%
+        {}%
+        {\addspace}%
+       \stripzeros{\thefield{#4}}}}%
+}
+
+\endinput

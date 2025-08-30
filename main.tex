@@ -1,0 +1,49 @@
+\documentclass[a4paper, 13pt]{article}
+% Layout: A4
+% Font size: 13pt
+
+\usepackage[utf8]{inputenc}
+\usepackage[T5,T1]{fontenc}
+\usepackage[vietnamese]{babel}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{csquotes}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+
+\usepackage[style=apa,backend=biber,sortcites=true,uniquename=false,uniquelist=false]{biblatex}
+\addbibresource{references.bib}
+
+\usepackage[top=2.5cm, bottom=2cm, left=2cm, right=2cm] {geometry}
+% Lề: 2.5cm (trên), 2cm (dưới), 2cm (trái), 2cm (phải)
+\renewcommand{\baselinestretch}{1.2}
+% Khoảng cách giữa các dòng: 1.2
+
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
+\makeatother
+
+
+\input{ueh/cover.tex}
+
+\begin{document}
+% Trang bìa
+\uehcover
+
+% Mục lục
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+
+% Nội dung chính
+
+\input{chapters/chapter1}
+\input{chapters/chapter2}
+\input{chapters/chapter3} 
+%-------------------%
+\newpage
+\printbibliography[title={Tài liệu tham khảo}, heading=subbibintoc]
+
+\end{document}

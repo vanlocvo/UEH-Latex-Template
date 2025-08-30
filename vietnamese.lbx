@@ -1,0 +1,383 @@
+\ProvidesFile{vietnamese.lbx}
+[2025-08-29]
+
+\DeclareRedundantLanguages{vietnamese}{vietnamese}
+
+\DeclareBibliographyExtras{%
+  \renewrobustcmd*{\bibdatesep}{/}%
+  \protected\def\bibrangedash{%
+    \textendash\penalty\hyphenpenalty}% breakable dash
+  \def\finalandcomma{\addcomma}%
+  \def\finalandsemicolon{\addsemicolon}%
+  \protected\def\mkbibordinal#1{%
+    \begingroup
+    \@tempcnta0#1\relax\number\@tempcnta
+    \@whilenum\@tempcnta>100\do{\advance\@tempcnta-100\relax}%
+    \ifnum\@tempcnta>20
+      \@whilenum\@tempcnta>9\do{\advance\@tempcnta-10\relax}%
+    \fi
+    \ifcase\@tempcnta th\or st\or nd\or rd\else th\fi
+    \endgroup}%
+  \protected\def\mkbibmascord{\mkbibordinal}%
+  \protected\def\mkbibfemord{\mkbibordinal}%
+  \protected\def\mkbibneutord{\mkbibordinal}%
+  \protected\def\mkbibdatelong#1#2#3{%
+    \iffieldundef{#2}
+      {}
+      {\mkbibmonth{\thefield{#2}}%
+       \iffieldundef{#3}
+         {\iffieldundef{#1}{}{\space}}
+         {\nobreakspace}}%
+    \iffieldundef{#3}
+      {}
+      {\stripzeros{\thefield{#3}}%
+       \iffieldundef{#1}{}{,\space}}%
+     \iffieldbibstring{#1}
+       {\bibstring{\thefield{#1}}}
+       {\dateeraprintpre{#1}\stripzeros{\thefield{#1}}}}%
+  \protected\def\mkbibdateshort#1#2#3{%
+    \iffieldundef{#2}
+      {}
+      {\mkmonthzeros{\thefield{#2}}%
+       \iffieldundef{#3}
+         {\iffieldundef{#1}{}{\bibdatesep}}
+         {/}}%
+    \iffieldundef{#3}
+      {}
+      {\mkdayzeros{\thefield{#3}}%
+       \iffieldundef{#1}{}{\bibdatesep}}%
+     \iffieldbibstring{#1}
+       {\bibstring{\thefield{#1}}}
+       {\dateeraprintpre{#1}\mkyearzeros{\thefield{#1}}}}%
+  \expandafter\protected\expandafter\def\csname mkbibtime24h\endcsname#1#2#3#4{%
+      \iffieldundef{#1}
+        {}
+        {\mktimezeros{\thefield{#1}}%
+         \iffieldundef{#2}{}{\bibtimesep}}%
+      \iffieldundef{#2}
+        {}
+        {\mktimezeros{\thefield{#2}}%
+         \iffieldundef{#3}{}{\bibtimesep}}%
+      \iffieldundef{#3}
+        {}
+        {\mktimezeros{\thefield{#3}}}%
+      \iffieldundef{#4}{}
+        {\bibtimezonesep
+         \mkbibtimezone{\thefield{#4}}}}%
+  \expandafter\protected\expandafter\def\csname mkbibtime12h\endcsname#1#2#3#4{%
+      \stripzeros{\mktimehh{\thefield{#1}}}%
+      \bibtimesep
+      \forcezerosmdt{\thefield{#2}}%
+      \iffieldundef{#3}{}
+        {\bibtimesep
+         \forcezerosmdt{\thefield{#3}}}%
+       \space
+       \ifnumless{\thefield{#1}}{12}
+         {\bibstring{am}}
+         {\bibstring{pm}}%
+      \iffieldundef{#4}{}
+       {\space\bibtimezonesep
+        \parentext{\mkbibtimezone{\thefield{#4}}}}}%
+  \protected\def\mkbibyeardivisiondateshort#1#2{%
+    \mkbibyeardivision{\thefield{#2}}%
+    \iffieldundef{#1}{}{\space}%
+    \dateeraprintpre{#1}\mkyearzeros{\thefield{#1}}}%
+  \protected\def\mkbibyeardivisiondatelong#1#2{%
+    \mkbibyeardivision{\thefield{#2}}%
+    \iffieldundef{#1}{}{\space}%
+    \dateeraprintpre{#1}\mkyearzeros{\thefield{#1}}}%
+  \savecommand\mkdaterangecomp
+  \savecommand\mkdaterangecompextra
+  \savecommand\mkdaterangeterse
+  \savecommand\mkdaterangeterseextra
+  \protected\def\mkdaterangecomp{%
+    \lbx@us@mkdaterangetrunc@long{long}}%
+  \protected\def\mkdaterangeterse{%
+    \lbx@us@mkdaterangetrunc@short{short}}%
+  \protected\def\mkdaterangecompextra{%
+    \lbx@us@mkdaterangetruncextra@long{long}}%
+  \protected\def\mkdaterangeterseextra{%
+    \lbx@us@mkdaterangetruncextra@short{short}}%
+}
+
+\UndeclareBibliographyExtras{%
+  \restorecommand\mkdaterangecomp
+  \restorecommand\mkdaterangecompextra
+  \restorecommand\mkdaterangeterse
+  \restorecommand\mkdaterangeterseextra
+}
+
+% Vietnamese translations for bibliography strings
+\DeclareBibliographyStrings{%  
+  bibliography     = {{Tài liệu tham khảo}{Tài liệu tham khảo}},
+  references       = {{Tham khảo}{Tham khảo}},
+  shorthands       = {{Danh sách từ viết tắt}{Từ viết tắt}},
+  editor           = {{biên tập}{biên tập}},
+  editors          = {{các biên tập viên}{các biên tập viên}},
+  compiler         = {{biên soạn}{biên soạn}},
+  compilers        = {{các biên soạn viên}{các biên soạn viên}},
+  translator       = {{dịch giả}{dịch giả}},
+  translators      = {{các dịch giả}{các dịch giả}},
+  commentator      = {{bình luận viên}{bình luận viên}},
+  commentators     = {{các bình luận viên}{các bình luận viên}},
+  annotator        = {{chú thích}{chú thích}},
+  annotators       = {{các chú thích viên}{các chú thích viên}},
+  introduction     = {{giới thiệu}{giới thiệu}},
+  foreword         = {{lời nói đầu}{lời nói đầu}},
+  afterword        = {{lời kết}{lời kết}},
+  and              = {{và}{và}},
+  andothers        = {{v.v.}{v.v.}},
+  volume           = {{tập}{tập}},
+  volumes          = {{các tập}{các tập}},
+  involumes        = {{trong}{trong}},
+  jourvol          = {{tập}{tập}},
+  jourser          = {{chuỗi}{chuỗi}},
+  book             = {{sách}{sách}},
+  part             = {{phần}{phần}},
+  issue            = {{số}{số}},
+  newseries        = {{chuỗi mới}{chuỗi mới}},
+  oldseries        = {{chuỗi cũ}{chuỗi cũ}},
+  edition          = {{phiên bản}{phiên bản}},
+  reprint          = {{tái bản}{tái bản}},
+  reprintof        = {{tái bản của}{tái bản của}},
+  reprintas        = {{tái bản như}{tái bản như}},
+  reprintfrom      = {{tái bản từ}{tái bản từ}},
+  reviewof         = {{đánh giá về}{đánh giá về}},
+  translationof    = {{bản dịch của}{bản dịch của}},
+  translationas    = {{dịch như}{dịch như}},
+  translationfrom  = {{dịch từ}{dịch từ}},
+  origpubas        = {{xuất bản gốc như}{xuất bản gốc như}},
+  origpubin        = {{xuất bản gốc tại}{xuất bản gốc tại}},
+  astitle          = {{như}{như}},
+  bypublisher      = {{bởi}{bởi}},
+  nodate           = {{không ngày}{không ngày}},
+  page             = {{trang}{tr}},
+  pages            = {{các trang}{tr}},
+  column           = {{cột}{cột}},
+  columns          = {{các cột}{các cột}},
+  line             = {{dòng}{dòng}},
+  lines            = {{các dòng}{các dòng}},
+  verse            = {{câu}{câu}},
+  verses           = {{các câu}{các câu}},
+  section          = {{mục}{mục}},
+  sections         = {{các mục}{các mục}},
+  paragraph        = {{đoạn}{đoạn}},
+  paragraphs       = {{các đoạn}{các đoạn}},
+  pagetotal        = {{tổng số trang}{tổng số trang}},
+  pagetotals       = {{tổng số các trang}{tổng số các trang}},
+  columntotal      = {{tổng số cột}{tổng số cột}},
+  columntotals     = {{tổng số các cột}{tổng số các cột}},
+  linetotal        = {{tổng số dòng}{tổng số dòng}},
+  linetotals       = {{tổng số các dòng}{tổng số các dòng}},
+  versetotal       = {{tổng số câu}{tổng số câu}},
+  versetotals      = {{tổng số các câu}{tổng số các câu}},
+  sectiontotal     = {{tổng số mục}{tổng số mục}},
+  sectiontotals    = {{tổng số các mục}{tổng số các mục}},
+  paragraphtotal   = {{tổng số đoạn}{tổng số đoạn}},
+  paragraphtotals  = {{tổng số các đoạn}{tổng số các đoạn}},
+  in               = {{trong}{trong}},
+  inseries         = {{trong chuỗi}{trong chuỗi}},
+  ofseries         = {{của chuỗi}{của chuỗi}},
+  number           = {{số}{số}},
+  chapter          = {{chương}{chương}},
+  bathesis         = {{Luận văn cử nhân}{Luận văn cử nhân}},
+  mathesis         = {{Luận văn thạc sĩ}{Luận văn thạc sĩ}},
+  phdthesis        = {{Luận án tiến sĩ}{Luận án tiến sĩ}},
+  resreport        = {{báo cáo nghiên cứu}{báo cáo nghiên cứu}},
+  techreport       = {{báo cáo kỹ thuật}{báo cáo kỹ thuật}},
+  software         = {{phần mềm}{phần mềm}},
+  datacd           = {{CD dữ liệu}{CD dữ liệu}},
+  audiocd          = {{CD âm thanh}{CD âm thanh}},
+  version          = {{phiên bản}{phiên bản}},
+  url              = {{địa chỉ}{địa chỉ}},
+  urlfrom          = {{có tại}{có tại}},
+  urlseen          = {{truy cập ngày}{truy cập ngày}},
+  inpreparation    = {{đang chuẩn bị}{đang chuẩn bị}},
+  submitted        = {{đã nộp}{đã nộp}},
+  forthcoming      = {{sắp xuất bản}{sắp xuất bản}},
+  inpress          = {{đang in}{đang in}},
+  prepublished     = {{xuất bản trước}{xuất bản trước}},
+  citedas          = {{được trích dẫn là}{được trích dẫn là}},
+  thiscite         = {{đặc biệt}{đặc biệt}},
+  seenote          = {{xem chú thích}{xem chú thích}},
+  quotedin         = {{được trích dẫn trong}{được trích dẫn trong}},
+  ibidem           = {{cùng nguồn}{cùng nguồn}},
+  opcit            = {{sđd}{sđd}},
+  loccit           = {{tại cùng nơi}{tại cùng nơi}},
+  confer           = {{xem thêm}{xem thêm}},
+  sequens          = {{tiếp theo}{tiếp theo}},
+  sequentes        = {{các tiếp theo}{các tiếp theo}},
+  passim           = {{rải rác}{rải rác}},
+  see              = {{xem}{xem}},
+  seealso          = {{xem thêm}{xem thêm}},
+  backrefpage      = {{được trích dẫn ở trang}{trích ở tr}},
+  backrefpages     = {{được trích dẫn ở các trang}{trích ở tr}},
+  january          = {{Tháng Một}{Th1}},
+  february         = {{Tháng Hai}{Th2}},
+  march            = {{Tháng Ba}{Th3}},
+  april            = {{Tháng Tư}{Th4}},
+  may              = {{Tháng Năm}{Th5}},
+  june             = {{Tháng Sáu}{Th6}},
+  july             = {{Tháng Bảy}{Th7}},
+  august           = {{Tháng Tám}{Th8}},
+  september        = {{Tháng Chín}{Th9}},
+  october          = {{Tháng Mười}{Th10}},
+  november         = {{Tháng Mười Một}{Th11}},
+  december         = {{Tháng Mười Hai}{Th12}},
+  am               = {{SA}{SA}},
+  pm               = {{CH}{CH}},
+}
+
+\protected\gdef\lbx@us@mkdaterangetrunc@long#1#2{%
+  \blx@if@printanytimes{#2}
+    {\mkdaterangefull{#1}{#2}}
+    {\lbx@us@mkdaterangetrunc@long@i{#1}{#2}}}
+
+\protected\gdef\lbx@us@mkdaterangetrunc@long@i#1#2{%
+  \begingroup
+    \blx@metadateinfo{#2}%
+    \iffieldundef{#2year}
+      {\blx@nounit}
+      {\printtext[{#2date}]{%
+         \datecircaprint
+         \iffieldundef{#2yeardivision}
+           {\ifdateyearsequal{#2}{#2end}
+             {\csuse{mkbibdate#1}{}{#2month}{#2day}}
+             {\csuse{mkbibdate#1}{#2year}{#2month}{#2day}%
+              \dateeraprint{#2year}}}
+           {\ifdateyearsequal{#2}{#2end}
+             {\csuse{mkbibyeardivisiondate#1}{}{#2yeardivision}}
+             {\csuse{mkbibyeardivisiondate#1}{#2year}{#2yeardivision}%
+              \dateeraprint{#2year}}}%
+         \dateuncertainprint
+         \iffieldundef{#2endyear}
+           {}
+           {\iffieldequalstr{#2endyear}{}
+             {\mbox{\bibdaterangesep}}
+             {\bibdaterangesep
+              \enddatecircaprint
+              \iffieldundef{#2endyeardivision}
+                {\ifdateyearsequal{#2}{#2end}
+                  {\iffieldsequal{#2month}{#2endmonth}
+                    {\csuse{mkbibdate#1}{#2endyear}{}{#2endday}}
+                    {\csuse{mkbibdate#1}{#2endyear}{#2endmonth}{#2endday}}}
+                  {\csuse{mkbibdate#1}{#2endyear}{#2endmonth}{#2endday}}}
+                {\csuse{mkbibyeardivisiondate#1}{#2endyear}{#2endyeardivision}}%
+              \enddateuncertainprint
+              \dateeraprint{#2endyear}}}}}%
+  \endgroup}
+
+\protected\gdef\lbx@us@mkdaterangetrunc@short#1#2{%
+  \blx@if@printanytimes{#2}
+    {\mkdaterangefull{#1}{#2}}
+    {\lbx@us@mkdaterangetrunc@short@i{#1}{#2}}}
+
+\protected\gdef\lbx@us@mkdaterangetrunc@short@i#1#2{%
+  \begingroup
+    \blx@metadateinfo{#2}%
+    \iffieldundef{#2year}
+      {\blx@nounit}
+      {\printtext[{#2date}]{%
+         \datecircaprint
+         \iffieldundef{#2yeardivision}
+           {\ifdateyearsequal{#2}{#2end}
+             {\csuse{mkbibdate#1}{}{#2month}{#2day}}
+             {\csuse{mkbibdate#1}{#2year}{#2month}{#2day}%
+              \dateeraprint{#2year}}}
+           {\ifdateyearsequal{#2}{#2end}
+             {\csuse{mkbibyeardivisiondate#1}{}{#2yeardivision}}
+             {\csuse{mkbibyeardivisiondate#1}{#2year}{#2yeardivision}%
+              \dateeraprint{#2year}}}%
+         \dateuncertainprint
+         \iffieldundef{#2endyear}
+           {}
+           {\iffieldequalstr{#2endyear}{}
+              {\mbox{\bibdaterangesep}}
+              {\bibdaterangesep
+               \enddatecircaprint
+               \iffieldundef{#2endyeardivision}
+                 {\csuse{mkbibdate#1}{#2endyear}{#2endmonth}{#2endday}}
+                 {\csuse{mkbibyeardivisiondate#1}{#2endyear}{#2endyeardivision}}%
+               \enddateuncertainprint
+               \dateeraprint{#2endyear}}}}}%
+  \endgroup}
+
+\protected\gdef\lbx@us@mkdaterangetruncextra@long#1#2{%
+  \blx@if@printanytimes{#2}
+    {\mkdaterangefullextra{#1}{#2}}
+    {\lbx@us@mkdaterangetruncextra@long@i{#1}{#2}}}
+
+\protected\gdef\lbx@us@mkdaterangetruncextra@long@i#1#2{%
+  \begingroup
+    \blx@metadateinfo{#2}%
+    \iffieldundef{#2year}
+      {\blx@nounit}
+      {\printtext[{#2date}]{%
+         \datecircaprint
+         \iffieldundef{#2yeardivision}
+           {\ifdateyearsequal{#2}{#2end}
+             {\csuse{mkbibdate#1}{}{#2month}{#2day}}
+             {\csuse{mkbibdate#1}{#2year}{#2month}{#2day}%
+              \dateeraprint{#2year}}}
+           {\ifdateyearsequal{#2}{#2end}
+             {\csuse{mkbibyeardivisiondate#1}{}{#2yeardivision}}
+             {\csuse{mkbibyeardivisiondate#1}{#2year}{#2yeardivision}%
+              \dateeraprint{#2year}}}%
+         \dateuncertainprint
+         \iffieldundef{#2endyear}
+           {\printfield{extradate}}
+           {\iffieldequalstr{#2endyear}{}
+              {\printfield{extradate}%
+               \mbox{\bibdaterangesep}}
+              {\bibdaterangesep
+               \enddatecircaprint
+               \iffieldundef{#2endyeardivision}
+                 {\ifdateyearsequal{#2}{#2end}
+                   {\iffieldsequal{#2month}{#2endmonth}
+                      {\csuse{mkbibdate#1}{#2endyear}{}{#2endday}}
+                      {\csuse{mkbibdate#1}{#2endyear}{#2endmonth}{#2endday}}}
+                   {\csuse{mkbibdate#1}{#2endyear}{#2endmonth}{#2endday}}}
+                 {\csuse{mkbibyeardivisiondate#1}{#2endyear}{#2endyeardivision}}%
+               \printfield{extradate}%
+               \enddateuncertainprint
+               \dateeraprint{#2endyear}}}}}%
+  \endgroup}
+
+\protected\gdef\lbx@us@mkdaterangetruncextra@short#1#2{%
+  \blx@if@printanytimes{#2}
+    {\mkdaterangefullextra{#1}{#2}}
+    {\lbx@us@mkdaterangetruncextra@short@i{#1}{#2}}}
+
+\protected\gdef\lbx@us@mkdaterangetruncextra@short@i#1#2{%
+  \begingroup
+    \blx@metadateinfo{#2}%
+    \iffieldundef{#2year}
+      {\blx@nounit}
+      {\printtext[{#2date}]{%
+         \datecircaprint
+         \iffieldundef{#2yeardivision}
+           {\ifdateyearsequal{#2}{#2end}
+             {\csuse{mkbibdate#1}{}{#2month}{#2day}}
+             {\csuse{mkbibdate#1}{#2year}{#2month}{#2day}%
+              \dateeraprint{#2year}}}
+           {\ifdateyearsequal{#2}{#2end}
+             {\csuse{mkbibyeardivisiondate#1}{}{#2yeardivision}}
+             {\csuse{mkbibyeardivisiondate#1}{#2year}{#2yeardivision}%
+              \dateeraprint{#2year}}}%
+         \dateuncertainprint
+         \iffieldundef{#2endyear}
+           {\printfield{extradate}}
+           {\iffieldequalstr{#2endyear}{}
+              {\printfield{extradate}%
+            \mbox{\bibdaterangesep}}
+           {\bibdaterangesep
+            \enddatecircaprint
+            \iffieldundef{#2endyeardivision}
+              {\csuse{mkbibdate#1}{#2endyear}{#2endmonth}{#2endday}}
+              {\csuse{mkbibyeardivisiondate#1}{#2endyear}{#2endyeardivision}}%
+            \printfield{extradate}%
+            \enddateuncertainprint
+            \dateeraprint{#2endyear}}}}}%
+  \endgroup}
+
+\endinput
