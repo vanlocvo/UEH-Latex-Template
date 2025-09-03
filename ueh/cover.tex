@@ -4,6 +4,8 @@
 \usepackage{geometry}
 \usepackage{lipsum}
 \usepackage{tcolorbox}
+\usepackage{csvsimple}
+\usepackage{tabularx}
 \usetikzlibrary{positioning, calc}
 \tcbuselibrary{breakable, skins}
 \definecolor{uehTeal}{HTML}{105F68}
@@ -11,6 +13,7 @@
 
 \newcommand{\uehsubject}{Môn học}
 \newcommand{\uehlecturer}{Giảng viên hướng dẫn}
+\newcommand{\uehgroupname}{Nhóm}
 \newcommand{\uehstudentname}{Họ và tên}
 \newcommand{\uehstudentid}{MSSV}
 \newcommand{\uehclass}{Lớp}
@@ -21,11 +24,13 @@
 
 \newcommand{\uehsubjectvalue}{Môn Học}
 \newcommand{\uehlecturervalue}{TS. Tiến Sĩ}
+\newcommand{\uehgroupnamevalue}{Nhóm ABC}
 \newcommand{\uehstudentnamevalue}{Võ Trí Lộc}
 \newcommand{\uehstudentidvalue}{123456789}
 \newcommand{\uehclassvalue}{1234567890}
 
-\newcommand{\uehcover}{
+
+\newcommand{\uehcommoncover}[1]{
     \begin{titlepage}
         \begin{tikzpicture}[remember picture, overlay]
 
@@ -61,8 +66,12 @@
                             \color{white}{
                             \textbf{\uehsubject:} \uehsubjectvalue\\[0.4cm]
                             \textbf{\uehlecturer:} \uehlecturervalue\\[0.4cm]
-                            \textbf{\uehstudentname:} \uehstudentnamevalue\\[0.4cm]
-                            \textbf{\uehstudentid:} \uehstudentidvalue\\[0.4cm]
+                            \ifx&#1&
+                                \textbf{\uehstudentname:} \uehstudentnamevalue\\[0.4cm]
+                                \textbf{\uehstudentid:} \uehstudentidvalue\\[0.4cm]
+                            \else
+                                \textbf{\uehgroupname:} \uehgroupnamevalue\\[0.4cm]
+                            \fi
                             \textbf{\uehclass:} \uehclassvalue
                         }
                     \end{minipage}
@@ -80,4 +89,29 @@
 
         \end{tikzpicture}
     \end{titlepage}
+}
+
+
+\newcommand{\uehcover}{
+    \uehcommoncover{}
+}
+
+\newcommand{\uehcovergroup}{
+    \uehcommoncover{nhóm}
+    \thispagestyle{empty}
+    \begin{center}
+        \section*{NHÓM SINH VIÊN THỰC HIỆN}
+        \subsection*{\uehgroupnamevalue}
+        \begin{tabularx}{.6\textwidth}{|c|X|c|}
+            \hline
+            \textbf{STT} &\textbf{Họ và tên} & \textbf{Mã số sinh viên} \\
+            \hline
+            \csvreader[no head,late after line=\\\hline]
+                {ueh/students.csv}{}
+                {\csvcoli & \csvcolii & \csvcoliii}
+        \end{tabularx}
+    \end{center}
+    \newpage
+    \thispagestyle{empty}
+
 }
