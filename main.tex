@@ -25,6 +25,8 @@
 \renewcommand*\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
 \makeatother
 
+\renewcommand{\listfigurename}{Danh mục hình ảnh}
+\renewcommand{\listtablename}{Danh mục bảng biểu}
 
 \input{ueh/cover.tex}
 
@@ -34,6 +36,9 @@
 \uehcover % Cá nhân
 
 % Mục lục
+\listoffigures % Danh mục hình ảnh
+\listoftables % Danh mục bảng
+\newpage
 \tableofcontents
 \newpage
 \setcounter{page}{1}
